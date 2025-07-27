@@ -1,6 +1,8 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomepageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,16 +15,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/Mayesha', function () {
     return view('welcome');
-
-});
-Route::get('/register', function () {
-    return view('welcome');
-    
 });
 
-Route::get('/login', function () {
-    return view('login');
-    
-});
+
+Route::get('/', [HomepageController:: class, 'movies'] ) -> name("movies");
+Route::get('/index', [HomepageController:: class, 'viewIndexPage'] );
+Route::get('/login', [HomepageController:: class, 'goToLoginPage'] );
+Route::get('/registration-owner', [HomepageController:: class, 'goToOwnerRegistrationPage'] )->name("register-owner");
+Route::get('/registration-renter', [HomepageController:: class, 'goToRenterRegistrationPage'] )->name("register-renter");
+Route::get('/login-renter', [HomepageController:: class, 'goToRenterLoginPage'] )->name("login-renter");
+Route::get('/login-owner', [HomepageController:: class, 'goToOwnerLoginPage'] );
+Route::get('/logout-renter', [HomepageController:: class, 'goToLogOutPage'] )->name('logout-renter');
+
+Route::get('/room-details3', [HomepageController:: class, 'goToDetailsPage3'] )-> name("room-details3");
+Route::get('/booked-list', [HomepageController:: class, 'bookedFlatListPage'] )-> name("booked-list");
+
+Route::get('/bookNow', [HomepageController:: class, 'goToBookingPage'] )-> name("bookNow");
+Route::get('/call-now', [HomepageController:: class, 'goToCallingPage'] )-> name("callNow");
+Route::get('/flat-list', [HomepageController:: class, 'goToFlatListPage'] )-> name("flat-list");
+Route::get('/payment', [HomepageController:: class, 'goToPaymentPage'] )-> name("payment");
+Route::get('/owner-dashboard', [HomepageController:: class, 'goToOwnerDashboard'] )-> name("owner-dashboard");
+Route::get('/renter-dashboard', [HomepageController:: class, 'goToRenterDashboard'] )-> name("renter-dashboard");
+
+Route::get('/save-owner', [HomepageController:: class, 'saveOwner'] )-> name("save-owner");
+Route::get('/save-renter', [HomepageController:: class, 'saveRenter'] )-> name("save-renter");
+Route::post('/save-flat', [HomepageController:: class, 'saveFlat'] )-> name("save-flat");
+Route::post('/booked-flat', [HomepageController:: class, 'saveBookedFlats'] )-> name("booked-flat");
+Route::get('/login-owner', [HomepageController:: class, 'loginOwner'] )-> name("login-owner");
+Route::get('/login-renter', [HomepageController:: class, 'loginRenter'] )-> name("login-renter");
+Route::get('/delete-flat', [HomepageController:: class, 'deleteFlat'] )-> name("delete-flat");
+Route::get('/contact', [HomepageController:: class, 'toContactPage'] )-> name("contact");
+Route::get('/update-flat', [HomepageController:: class, 'updateFlat'] )-> name("update-flat");
+Route::get('/logout', [HomepageController:: class, 'goToOwnerLogoutPage'] )-> name("logout");
+
+
+
+
+
+Route::get('/add-flat', [HomepageController:: class, 'goToAddFlat'] )-> name("add-flat");
